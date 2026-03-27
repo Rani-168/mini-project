@@ -1,12 +1,15 @@
 import { useState,  useEffect, useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeContext } from "./context/ThemeContext";
+import { UserContext } from "./context/UserContext";
+
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import UserDetails from "./pages/UserDetails";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 // Greeting component
 function Greeting(isLoggedIn ) {
   return (
@@ -27,6 +30,8 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
   const { theme } = useContext(ThemeContext);
+  const { user } = useContext(UserContext);
+
 
  
   function CreateName(e){
@@ -89,6 +94,11 @@ if (loading) {
     padding: "20px",
   };
 
+if (!user) {
+    return <Login />;
+  }
+
+
   return (
     <div style={styles}>
       <h1>Hello React!</h1>
@@ -148,7 +158,8 @@ if (loading) {
     </div>
     <BrowserRouter>
       <Navbar />
-
+       <h2>Welcome, {user.name}! 👋</h2>
+       
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

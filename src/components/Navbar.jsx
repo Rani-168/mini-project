@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { UserContext } from "../context/UserContext";
 
 
 function Navbar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
-
+    const { logout } = useContext(UserContext);
 
   return (
     <nav style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
@@ -17,6 +18,7 @@ function Navbar() {
       <button onClick={toggleTheme}>
         Switch to {theme === "light" ? "Dark" : "Light"} Mode
       </button>
+      <button onClick={logout}>Logout</button>
     </nav>
   );
 }
