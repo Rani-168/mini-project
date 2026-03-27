@@ -1,11 +1,12 @@
-import { useState,  useEffect  } from "react";
+import { useState,  useEffect, useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeContext } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import UserDetails from "./pages/UserDetails";
-
+import NotFound from "./pages/NotFound";
 // Greeting component
 function Greeting(isLoggedIn ) {
   return (
@@ -25,6 +26,7 @@ function App() {
   const [error, setError] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [input, setInput] = useState("");
+  const { theme } = useContext(ThemeContext);
 
  
   function CreateName(e){
@@ -79,8 +81,16 @@ if (loading) {
     setTasks(updatedTasks);
   }
 
+
+   const styles = {
+    backgroundColor: theme === "light" ? "#ffffff" : "#121212",
+    color: theme === "light" ? "#000000" : "#ffffff",
+    minHeight: "100vh",
+    padding: "20px",
+  };
+
   return (
-    <div>
+    <div style={styles}>
       <h1>Hello React!</h1>
         <input
         type="text"
@@ -144,6 +154,7 @@ if (loading) {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/user/:id" element={<UserDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
     </div>
