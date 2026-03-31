@@ -1,23 +1,23 @@
-import { createContext, useState } from "react";
+// import { createContext, useState } from "react";
 
-export const UserContext = createContext();
+// export const UserContext = createContext();
 
-function UserProvider({ children }) {
-  const [user, setUser] = useState(null); // null = not logged in
+// function UserProvider({ children }) {
+//   const [user, setUser] = useState(null); // null = not logged in
 
-  const login = (username) => {
-    setUser({ name: username });
-  };
+//   const login = (username) => {
+//     setUser({ name: username });
+//   };
 
-  const logout = () => {
-    setUser(null);
-  };
+//   const logout = () => {
+//     setUser(null);
+//   };
 
-  return (
-    <UserContext.Provider value={{ user, login, logout }}>
-      {children}
-    </UserContext.Provider>
-  );
-}
+//   return (
+//     <UserContext.Provider value={{ user, login, logout }}>
+//       {children}
+//     </UserContext.Provider>
+//   );
+// }
 
-export default UserProvider;
+// export default UserProvider;
