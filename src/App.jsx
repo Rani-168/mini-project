@@ -25,7 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 // App component
 function App() {
 
-   const dispatch = 
+  
 //   const[name, setname] = useState("");
 //   const[change, SetChange] = useState(true);
 //   const[list]=useState(["Apple", "Banana", "Orange"]);
